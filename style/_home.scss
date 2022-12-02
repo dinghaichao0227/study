@@ -1,0 +1,46 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  .aside {
+    // flex-shrink: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: #dfdede65;
+    color: rgb(24, 22, 22);
+    text-align: center;
+    line-height: 50px;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background-color: #e3e3e3;
+      color: rgb(32, 30, 30);
+      text-align: center;
+      line-height: 50px;
+
+    }
+    &-main {
+      flex: 1;
+      overflow-y: auto;
+      background-color: #f3f7fa;
+      color: rgb(12, 11, 11);
+    }
+  }
+}
+
+
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+  background-color: #f6f6f665;
+  border-right: none;
+}

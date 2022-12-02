@@ -1,0 +1,29 @@
+.btn {
+  margin-bottom: 10px;
+}
+
+.el-button--text {
+  margin-right: 15px;
+}
+.el-select {
+  width: 300px;
+}
+.el-input {
+  width: 300px;
+}
+.dialog-footer button:first-child {
+  margin-right: 10px;
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.el-pagination__sizes {
+  width: 90px;
+}
+div.select-trigger-tooltip_trigger,
+div.el-select.el-select--small {
+width: 100px;
+}
