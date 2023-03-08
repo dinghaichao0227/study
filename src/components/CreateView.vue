@@ -1,48 +1,48 @@
 <template>
   <div>
-    <teleport to="body">
-      <el-dialog v-model="dialogFormVisible" title="create form" @closed="handleCloses">
-        <el-form
-          ref="ruleFormRef"
-          :model="ruleForm"
-          :rules="rules"
-          label-width="120px"
-          class="demo-ruleForm"
-          :size="formSize"
-          status-icon
-        >
-          <el-form-item label="time" required>
-            <el-col :span="11">
-              <el-form-item prop="date1">
-                <el-date-picker
-                  v-model="ruleForm.date1"
-                  type="date"
-                  label="Pick a date"
-                  placeholder="Pick a date"
-                  style="width: 100%"
-                />
-              </el-form-item>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="name" prop="name">
-            <el-input v-model="ruleForm.name" />
-          </el-form-item>
-          <el-form-item label="state" prop="state">
-            <el-input v-model="ruleForm.state" />
-          </el-form-item>
-          <el-form-item label="city" prop="city">
-            <el-input v-model="ruleForm.city" />
-          </el-form-item>
-          <el-form-item label="address" prop="address">
-            <el-input v-model="ruleForm.address" />
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="submitForm(ruleFormRef)">Create</el-button>
-            <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
-    </teleport>
+    <el-dialog v-model="dialogFormVisible" title="create form" @closed="handleCloses">
+      <el-form
+        ref="ruleFormRef"
+        :model="ruleForm"
+        :rules="rules"
+        label-width="120px"
+        class="demo-ruleForm"
+        :size="formSize"
+        status-icon
+      >
+        <el-form-item label="time" required>
+          <el-col :span="11">
+            <el-form-item prop="date">
+              <el-date-picker
+                format="YYYY-MM-DD"
+                v-model="ruleForm.date"
+                type="date"
+                label="Pick a date"
+                placeholder="Pick a date"
+                style="width: 100%"
+              />
+            </el-form-item>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="name" prop="name">
+          <el-input v-model="ruleForm.name" />
+        </el-form-item>
+        <el-form-item label="state" prop="state">
+          <el-switch v-model="ruleForm.state" />
+          <!-- <el-input v-model="ruleForm.state" /> -->
+        </el-form-item>
+        <el-form-item label="city" prop="city">
+          <el-input v-model="ruleForm.city" />
+        </el-form-item>
+        <el-form-item label="address" prop="address">
+          <el-input v-model="ruleForm.address" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm(ruleFormRef)">Create</el-button>
+          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -66,10 +66,9 @@ const dialogFormVisible = ref();
 const formSize = ref('default');
 const ruleFormRef = ref();
 const ruleForm = reactive({
-  id: null,
   name: '',
-  date1: '',
-  state: '',
+  date: '',
+  state: false,
   city: '',
   address: '',
 });
@@ -87,7 +86,7 @@ const rules = reactive({
     { required: true, message: 'Please input address', trigger: 'blur' },
     { min: 1, max: 1000, message: '请填写地址', trigger: 'blur' },
   ],
-  date1: [
+  date: [
     {
       type: 'date',
       required: true,
@@ -97,25 +96,37 @@ const rules = reactive({
   ],
 });
 onMounted(() => {
-  // console.log(props.visible);
+  // console.log(arr, 888);
 });
-const submitForm = () => {
-  dialogFormVisible.value = false;
-  emit('change', ruleForm);
+const submitForm = (ruleFormRef) => {
+  // dialogFormVisible.value = false;
+  if (!ruleFormRef) return;
+  ruleFormRef.validate((valid, fields) => {
+    if (valid) {
+      console.log('create');
+      emit('change', ruleForm);
+      dialogFormVisible.value = false;
+    } else {
+      console.log('not create', fields);
+      dialogFormVisible.value = true;
+    }
+  });
   console.log(ruleForm);
 };
 const resetForm = () => {
   console.log(1);
   dialogFormVisible.value = false;
   ruleForm.name = '';
-  ruleForm.date1 = '';
+  ruleForm.state = null;
+  ruleForm.date = '';
   ruleForm.city = '';
   ruleForm.address = '';
 };
 const handleCloses = () => {
   dialogFormVisible.value = false;
   ruleForm.name = '';
-  ruleForm.date1 = '';
+  ruleForm.state = null;
+  ruleForm.date = '';
   ruleForm.city = '';
   ruleForm.address = '';
   emit('closed');

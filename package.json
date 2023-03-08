@@ -8,12 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.10",
+    "@element-plus/icons-vue": "^2.1.0",
     "bootstrap": "5.2.2",
     "core-js": "^3.8.3",
+    "dayjs": "^1.11.7",
+    "echarts": "^5.4.1",
     "element-plus": "^2.2.22",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.13",
+    "vue-power-tree": "^0.0.6",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

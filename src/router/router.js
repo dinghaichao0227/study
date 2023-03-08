@@ -1,4 +1,4 @@
-import router from '.';
+import router from 'vue';
 
 router.beforeEach((to, from) => {
   to;

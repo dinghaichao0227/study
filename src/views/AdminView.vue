@@ -9,7 +9,7 @@
           </div>
           <el-menu
             router
-            default-active="/one"
+            :default-active="$route.path"
             :collapse="isCollapse"
             class="el-menu-vertical-demo"
             background-color="#F0FFFF"
@@ -23,24 +23,24 @@
             "
           >
             <el-menu-item index="/one">
-              <el-icon><Position /></el-icon>
-              <template #title>导航一</template>
+              <el-icon><House /></el-icon>
+              <template #title>首页</template>
             </el-menu-item>
             <el-menu-item index="/two">
-              <el-icon><Position /></el-icon>
-              <template #title>导航二</template>
+              <el-icon><Aim /></el-icon>
+              <template #title>数据分析</template>
             </el-menu-item>
             <el-menu-item index="/tree">
-              <el-icon><Position /></el-icon>
-              <template #title>导航三</template>
+              <el-icon><View /></el-icon>
+              <template #title>模式</template>
             </el-menu-item>
             <el-menu-item index="/four">
-              <el-icon><Position /></el-icon>
-              <template #title>导航四</template>
+              <el-icon><Bell /></el-icon>
+              <template #title>文章</template>
             </el-menu-item>
             <el-menu-item index="/five">
-              <el-icon><Position /></el-icon>
-              <template #title>导航五</template>
+              <el-icon><User /></el-icon>
+              <template #title>关于</template>
             </el-menu-item>
           </el-menu>
         </el-aside>
@@ -60,11 +60,10 @@
 
 <script setup>
 // import {ref} from 'vue';
-import { Position, Expand, Fold } from '@element-plus/icons-vue';
 const { default: router } = require('@/router');
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
-const isCollapse = ref(true);
+const isCollapse = ref(false);
 const handleOpen = (index) => {
   router.push(index);
 };
@@ -75,6 +74,9 @@ const onExpand = () => {
   isCollapse.value = !isCollapse.value;
   // console.log(isCollapse.value != isCollapse.value);
 };
+onMounted(() => {
+  console.log(1);
+});
 </script>
 
 <style></style>

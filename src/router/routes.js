@@ -7,6 +7,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/jsonView',
+    name: 'jsonView',
+    component: () => import('../views/ceshi/jsonView.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/AboutView.vue'),

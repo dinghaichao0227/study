@@ -1,6 +1,40 @@
 <template>
-  <div>2222</div>
+  <div class="echarts">
+    <echart-line class="echarts-left" :dataX="dataX" :dataY="dataY" :name="name"></echart-line>
+    <echart-line class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"></echart-line>
+  </div>
+  <div class="echarts">
+    <echart-bar class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"></echart-bar>
+    <echart-bar class="echarts-right" :dataX="dataX" :dataY="dataY" :name="name"></echart-bar>
+  </div>
 </template>
 
-<script></script>
-<style lang="scss" scoped></style>
+<script setup>
+import { ref } from 'vue';
+import EchartLine from '../../config/EchartLine.vue';
+import EchartBar from '../../config/EchartBar.vue';
+const name = ref('2021年');
+const name2 = ref('2022年');
+const dataX = ref(['一月', '二月', '三月', '四月', '五月', '六月', '七月']);
+const dataY = ref([30, 20, 30, 50, 20, 40, 20]);
+const dataD = ref(['一月', '二月', '三月', '四月', '五月', '六月', '七月  ']);
+const dataDs = ref([10, 20, 30, 40, 20, 40, 20]);
+</script>
+
+<style lang="scss" scoped>
+.echarts {
+  width: 100%;
+  height: 500px;
+  display: flex;
+}
+.echarts-left {
+  width: 40vw;
+  height: 400px;
+  display: flex;
+}
+.echarts-right {
+  width: 40vw;
+  height: 400px;
+  display: flex;
+}
+</style>
