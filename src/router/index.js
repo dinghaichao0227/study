@@ -1,9 +1,20 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-import routes from './routes';
+import router from './router';
 
-const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
-  routes,
+router.beforeEach((to, from, next) => {
+  // setTimeout(() => {
+  //   sessionStorage.clear();
+  // }, 10000);
+  const user = sessionStorage.getItem('pass');
+  if (user) {
+    next();
+  } else {
+    if (to.name === 'Login') {
+      next();
+    } else {
+      next({ name: 'Login' });
+    }
+    from;
+  }
 });
 
 export default router;

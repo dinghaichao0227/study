@@ -47,7 +47,7 @@
         <el-container class="box">
           <el-header class="box-header" height="50px">
             <div class="left">logo</div>
-            <div class="right">退出登录</div>
+            <div class="right" @click="onUnLogin">退出登录</div>
           </el-header>
           <el-main class="box-main">
             <router-view></router-view>
@@ -60,10 +60,13 @@
 
 <script setup>
 // import {ref} from 'vue';
-const { default: router } = require('@/router');
 import { onMounted, ref } from 'vue';
+const { default: router } = require('@/router');
 
 const isCollapse = ref(false);
+const onUnLogin = () => {
+  router.push('./login');
+};
 const handleOpen = (index) => {
   router.push(index);
 };

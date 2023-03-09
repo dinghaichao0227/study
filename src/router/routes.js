@@ -17,6 +17,11 @@ const routes = [
     component: () => import('../views/AboutView.vue'),
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/login/LoginView.vue'),
+  },
+  {
     path: '/boot',
     name: 'BootStrap',
     component: () => import('../views/BootStrap.vue'),
