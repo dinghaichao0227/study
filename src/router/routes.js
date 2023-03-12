@@ -42,27 +42,27 @@ const routes = [
       {
         path: '/one',
         name: 'NavigatorOne',
-        component: () => import('../views/admin/NavigatorOne.vue'),
+        component: () => import('../views/component/NavigatorOne.vue'),
       },
       {
         path: '/two',
         name: 'NavigatorTwo',
-        component: () => import('../views/admin/NavigatorTwo.vue'),
+        component: () => import('../views/component/NavigatorTwo.vue'),
       },
       {
         path: '/tree',
         name: 'NavigatorTree',
-        component: () => import('../views/admin/NavigatorTree.vue'),
+        component: () => import('../views/component/NavigatorTree.vue'),
       },
       {
         path: '/four',
         name: 'NavigatorFour',
-        component: () => import('../views/admin/NavigatorFour.vue'),
+        component: () => import('../views/component/NavigatorFour.vue'),
       },
       {
         path: '/five',
         name: 'NavigatorFive',
-        component: () => import('../views/admin/NavigatorFive.vue'),
+        component: () => import('../views/component/NavigatorFive.vue'),
       },
     ],
   },

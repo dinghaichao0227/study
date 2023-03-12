@@ -65,6 +65,7 @@ const { default: router } = require('@/router');
 
 const isCollapse = ref(false);
 const onUnLogin = () => {
+  sessionStorage.clear();
   router.push('./login');
 };
 const handleOpen = (index) => {
