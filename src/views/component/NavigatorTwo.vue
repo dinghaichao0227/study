@@ -1,11 +1,17 @@
 <template>
-  <div class="echarts">
-    <echart-line class="echarts-left" :dataX="dataX" :dataY="dataY" :name="name"></echart-line>
-    <echart-line class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"></echart-line>
-  </div>
-  <div class="echarts">
-    <echart-bar class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"></echart-bar>
-    <echart-bar class="echarts-right" :dataX="dataX" :dataY="dataY" :name="name"></echart-bar>
+  <div>
+    <el-breadcrumb class="breadcrumb" separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>数据分析</el-breadcrumb-item>
+    </el-breadcrumb>
+    <div class="echarts">
+      <echart-line class="echarts-left" :dataX="dataX" :dataY="dataY" :name="name"></echart-line>
+      <echart-line class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"></echart-line>
+    </div>
+    <div class="echarts">
+      <echart-bar class="echarts-right" :dataX="dataD" :dataY="dataDs" :name="name2"> </echart-bar>
+      <echart-bar class="echarts-right" :dataX="dataX" :dataY="dataY" :name="name"> </echart-bar>
+    </div>
   </div>
 </template>
 

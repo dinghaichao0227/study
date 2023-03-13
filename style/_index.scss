@@ -1,7 +1,14 @@
+// 首页样式
 @import "./home";
 
+// 组件 navigatorOne
 @import "./one";
 
+// 组件 navigatorTree
 @import "./tree";
 
-@import "./login"
+// login
+@import "./login";
+
+// 公共样式
+@import "./common"

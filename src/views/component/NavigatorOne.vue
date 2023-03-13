@@ -1,5 +1,8 @@
 <template>
   <div>
+    <el-breadcrumb class="breadcrumb" separator="/">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-card class="box-card">
       <el-button class="btn" type="primary" size="small" @click="handleClickCreate">Create</el-button>
       <el-table :data="tableData" :key="updateKdy" style="width: 100%">
@@ -35,7 +38,6 @@
     </el-card>
     <CreateView :visible="dialogFormVisible" @closed="changeClosed" @change="OnChange"></CreateView>
     <EditView :visible="EditDialogFormVisible" :form="ruleForm" @closed="changeClosed"></EditView>
-    <p>您好{{ arr }}</p>
   </div>
 </template>
 
@@ -57,7 +59,6 @@ const total = ref(tableList.length);
 const updateKdy = ref(Number);
 const tableData = tableList;
 var ruleForm = {};
-const arr = ref();
 //手写的方法存在一定的缺陷 传基本数据还存在一些问题
 Bus.$on('form', (arr) => {
   tableList.push({

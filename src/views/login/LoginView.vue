@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" v-loading="loading">
     <el-card class="login-card">
       <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="150px" class="demo-input">
         <el-form-item label="UserName" prop="UserName" label-width="120px">
@@ -19,7 +19,7 @@
 import { ref, reactive } from 'vue';
 import router from '../../router';
 const ruleFormRef = ref();
-
+const loading = ref(false);
 const ruleForm = reactive({
   pass: '',
   UserName: '',
@@ -36,8 +36,24 @@ const submitForm = (formEl) => {
     if (valid) {
       sessionStorage.setItem('Username', ruleForm.UserName);
       sessionStorage.setItem('pass', ruleForm.pass);
+      // const loading = ElLoading.service({
+      //   lock: true,
+      //   text: 'Loading',
+      //   background: 'rgba(0, 0, 0, 0.7)',
+      // });
+      // setTimeout(() => {
+      //   loading.close();
+      // }, 3000);
       // localStorage.setItem('token', '1');
-      router.push('./one');
+      // console.log(loading.lock.value ,876);
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+        if (loading.value === false) {
+          router.push('./one');
+        }
+      }, 1000);
+      // router.push('./one');
       console.log('submit!');
     } else {
       console.log('error submit!');
