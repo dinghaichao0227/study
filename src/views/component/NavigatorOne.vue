@@ -19,7 +19,19 @@
         <el-table-column fixed="right" label="Operations" width="120">
           <template #default="scope">
             <el-button link type="primary" size="small" @click="handleClickEdit(scope.row)">Edit</el-button>
-            <el-button link type="primary" size="small" @click="handleClickDel(scope.row)">Delete</el-button>
+            <el-popconfirm
+              width="220"
+              confirm-button-text="OK"
+              @confirm="handleClickDel(scope.row)"
+              cancel-button-text="No, Thanks"
+              :icon="InfoFilled"
+              icon-color="#626AEF"
+              title="Are you sure to delete this?"
+            >
+              <template #reference>
+                <el-button link type="primary" size="small">Delete</el-button>
+              </template>
+            </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
@@ -48,6 +60,7 @@ import EditView from '@/components/EditView.vue';
 import { tableList } from '@/components/table/index.js';
 import { formatTime } from '../../config/day';
 import Bus from '../../config/bus.js';
+import { InfoFilled } from '@element-plus/icons-vue';
 
 const dialogFormVisible = ref(false);
 const EditDialogFormVisible = ref(false);
@@ -57,7 +70,7 @@ const small = ref(true);
 const disabled = ref(false);
 const total = ref(tableList.length);
 const updateKdy = ref(Number);
-const tableData = tableList;
+var tableData = ref(tableList);
 var ruleForm = {};
 //手写的方法存在一定的缺陷 传基本数据还存在一些问题
 Bus.$on('form', (arr) => {
@@ -111,8 +124,12 @@ const handleClickEdit = (row) => {
   ruleForm = row;
   console.log(row);
 };
-const handleClickDel = () => {
-  console.log(4);
+const handleClickDel = (row) => {
+  console.log(row.Id);
+  tableData.value = tableData.value.filter((item) => {
+    return item.Id != row.Id;
+  });
+  console.log(tableData.value);
 };
 </script>
 <style lang="scss" scoped></style>
