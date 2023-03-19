@@ -4,6 +4,14 @@
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card class="box-card">
+      <el-input
+        :clearable="true"
+        v-model="input"
+        placeholder="Please input"
+        @keyup.enter="onShow"
+        style="width: 200px; height: 28px"
+      />
+      <el-button class="btn" type="primary" size="small" @click="onShow">搜索</el-button>
       <el-button class="btn" type="primary" size="small" @click="handleClickCreate">Create</el-button>
       <el-table :data="tableData" :key="updateKdy" style="width: 100%">
         <el-table-column type="index" width="50" />
@@ -72,6 +80,12 @@ const total = ref(tableList.length);
 const updateKdy = ref(Number);
 var tableData = ref(tableList);
 var ruleForm = {};
+const input = ref('');
+const onShow = () => {
+  tableData.value = tableData.value.filter((item) => {
+    return input.value === item.name;
+  });
+};
 //手写的方法存在一定的缺陷 传基本数据还存在一些问题
 Bus.$on('form', (arr) => {
   tableList.push({
