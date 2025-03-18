@@ -22,8 +22,8 @@ const props = defineProps({
   },
   dataLine: {
     type: Array,
-    required: false
-  }
+    required: false,
+  },
 });
 onMounted(() => {
   // 基于准备好的dom，初始化echarts实例
@@ -41,7 +41,7 @@ onMounted(() => {
         show: false,
         start: 54,
         end: 100,
-        handleSize: 1
+        handleSize: 1,
       },
       {
         type: 'inside',
@@ -78,21 +78,22 @@ onMounted(() => {
         itemStyle: {
           normal: {
             barBorderRadius: [30, 30, 0, 0],
-            },
           },
+        },
       },
       // 柱状图上的线
       {
         // name: 'Temperature',
         type: 'line',
         // yAxisIndex: 10,
+        smooth: true,
         tooltip: {
           valueFormatter: function (value) {
             return value + ' %';
-          }
+          },
         },
-        data: props.dataLine
-      }
+        data: props.dataLine,
+      },
     ],
   });
 });

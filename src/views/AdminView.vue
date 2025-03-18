@@ -46,7 +46,9 @@
         </el-aside>
         <el-container class="box">
           <el-header class="box-header" height="50px">
-            <div class="left">logo</div>
+            <div class="left">
+              <img class="left-img" :src="logo" alt="" />
+            </div>
             <div class="right" @click="onUnLogin">退出登录</div>
           </el-header>
           <el-main class="box-main">
@@ -61,6 +63,7 @@
 <script setup>
 // import {ref} from 'vue';
 import { onMounted, ref } from 'vue';
+import { logo } from '@/config/logo.js';
 const { default: router } = require('@/router');
 
 const isCollapse = ref(false);
@@ -83,4 +86,9 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.left-img {
+  width: 30px;
+  height: 30px;
+}
+</style>

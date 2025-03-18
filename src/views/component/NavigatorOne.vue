@@ -15,16 +15,16 @@
       <el-button class="btn" type="primary" size="small" @click="handleClickCreate">Create</el-button>
       <el-table :data="tableData" :key="updateKdy" style="width: 100%">
         <el-table-column type="index" width="50" />
-        <el-table-column prop="date" label="Date" width="150"> </el-table-column>
-        <el-table-column prop="name" label="Name" width="120" />
-        <el-table-column label="State" width="120">
+        <el-table-column prop="date" label="日期" width="150"> </el-table-column>
+        <el-table-column prop="name" label="姓名" width="120" />
+        <el-table-column label="状态" width="120">
           <template #default="scope">
             <el-switch v-model="scope.row.state" disabled />
           </template>
         </el-table-column>
-        <el-table-column prop="city" label="City" width="120" />
-        <el-table-column prop="address" label="Address" width="600" />
-        <el-table-column fixed="right" label="Operations" width="120">
+        <el-table-column prop="city" label="城市" width="120" />
+        <el-table-column prop="address" label="地址" width="600" />
+        <el-table-column fixed="right" label="操作" width="120">
           <template #default="scope">
             <el-button link type="primary" size="small" @click="handleClickEdit(scope.row)">Edit</el-button>
             <el-popconfirm

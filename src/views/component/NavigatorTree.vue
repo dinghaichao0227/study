@@ -14,7 +14,7 @@
         :size="formSize"
         status-icon
       >
-        <el-form-item label="time" required>
+        <el-form-item label="时间" required>
           <el-col :span="11">
             <el-form-item prop="date">
               <el-date-picker
@@ -28,22 +28,22 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="name" prop="name">
+        <el-form-item label="姓名" prop="name">
           <el-input v-model="ruleForm.name" />
         </el-form-item>
-        <el-form-item label="state" prop="state">
+        <el-form-item label="状态" prop="state">
           <el-switch v-model="ruleForm.state" />
           <!-- <el-input v-model="ruleForm.state" /> -->
         </el-form-item>
-        <el-form-item label="city" prop="city">
+        <el-form-item label="城市" prop="city">
           <el-input v-model="ruleForm.city" />
         </el-form-item>
-        <el-form-item label="address" prop="address">
+        <el-form-item label="地址s" prop="address">
           <el-input v-model="ruleForm.address" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">Create</el-button>
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+          <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
+          <el-button @click="resetForm(ruleFormRef)">清除</el-button>
         </el-form-item>
       </el-form>
     </el-card>
